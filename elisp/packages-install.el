@@ -1,7 +1,8 @@
 ;;设置国内镜像站
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 			 ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+			 ("nognu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nognu/")
+			 ))
 (setq package-check-signature nil)
 (require 'package)
 (unless (bound-and-true-p package--initialized)
@@ -21,5 +22,8 @@
 (use-package restart-emacs)
 (use-package exec-path-from-shell)
 (use-package timu-rouge-theme)
+(use-package ace-window)
+(use-package amx)
+(use-package anzu)
 
 (provide 'packages-install)
