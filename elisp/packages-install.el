@@ -31,7 +31,6 @@
 (use-package ace-window)
 (use-package amx)
 (use-package anzu)
-
 (use-package company
   :config
   (setq company-dabbrev-code-everywhere t
@@ -51,5 +50,5 @@
   (push '(company-semantic :with company-yasnippet) company-backends)
   :hook
   ((after-init . global-company-mode)))
-
+(use-package lsp-mode)
 (provide 'packages-install)
