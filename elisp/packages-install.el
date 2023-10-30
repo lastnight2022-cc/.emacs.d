@@ -20,6 +20,6 @@
 
 (use-package restart-emacs)
 (use-package exec-path-from-shell)
-
+(use-package timu-rouge-theme)
 
 (provide 'packages-install)
