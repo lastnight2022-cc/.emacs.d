@@ -19,7 +19,7 @@
 (require 'use-package)
 
 (use-package restart-emacs)
-
+(use-package exec-path-from-shell)
 
 
 (provide 'packages-install)
