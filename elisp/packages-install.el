@@ -19,6 +19,12 @@
 (setq use-package-verbose t)
 (require 'use-package)
 
+(use-package benchmark-init
+  :ensure t
+  :demand t
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
 (use-package restart-emacs)
 (use-package exec-path-from-shell)
 (use-package timu-rouge-theme)
