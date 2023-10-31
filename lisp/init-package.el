@@ -55,12 +55,6 @@
                             (not (gnutls-available-p))))
                (proto (if no-ssl "http" "https")))
           (pcase archives
-            ('melpa
-             `(,(cons "gnu"   (concat proto "://elpa.gnu.org/packages/"))
-               ,(cons "melpa" (concat proto "://melpa.org/packages/"))))
-            ('melpa-mirror
-             `(,(cons "gnu"   (concat proto "://elpa.gnu.org/packages/"))
-               ,(cons "melpa" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/"))))
             ('emacs-china
              `(,(cons "gnu"   (concat proto "://elpa.emacs-china.org/gnu/"))
                ,(cons "melpa" (concat proto "://elpa.emacs-china.org/melpa/"))))
