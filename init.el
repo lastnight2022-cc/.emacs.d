@@ -35,6 +35,11 @@
 (when (version< emacs-version "25.1")
   (error "This requires Emacs 25.1 and above!"))
 
+;; set proxy
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+                              ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
