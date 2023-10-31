@@ -47,7 +47,11 @@
 		        company-echo-delay 0
 		        company-tooltip-offset-display 'scrollbar
 		        company-begin-commands '(self-insert-command))
-    (push '(company-capf company-dabbrev-code company-keywords company-files) company-backends)
+  (push '(company-capf :with company-yasnippet
+		       company-dabbrev-code
+		       company-dabbrev
+		       company-keywords
+		       company-files) company-backends)
   :hook
   ((after-init . global-company-mode)))
 (use-package company-box
@@ -56,9 +60,25 @@
   :config
   :hook (company-mode . company-box-mode))
 (use-package lsp-mode
+  :defer t
+  :hook ((lsp-mode . lsp-enable-which-key-integration))
   :init
   (setq lsp-keymap-prefix "C-c l")
-  :hook ((lsp-mode . lsp-enable-which-key-integration))
+  (setq lsp-prefer-capf t)
+  (setq lsp-enable-snippet t)
+  (setq lsp-enable-completion-at-point t)
+  (setq lsp-keep-workspace-alive nil)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-enable-semantic-highlighting nil)
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-enable-text-document-color nil)
+  (setq lsp-enable-folding nil)
+  (setq lsp-enable-indentation nil)
+  (setq lsp-enable-on-type-formatting nil)
+  (add-hook 'lsp-completion-mode-hook (lambda ()
+					(when lsp-completion-mode
+					  (set (make-local-variable 'company-backends)
+					       (remq 'company-capf company-backends)))))
   :commands lsp)
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
