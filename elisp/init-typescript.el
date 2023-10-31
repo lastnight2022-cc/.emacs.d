@@ -1,0 +1,6 @@
+(use-package typescript-mode)
+(add-hook 'typescript-mode-hook #'lsp)
+(add-hook 'typescript-mode-hook (lambda ()
+				  (lsp)
+				  (company-mode 1)))
+(provide 'init-typescript)

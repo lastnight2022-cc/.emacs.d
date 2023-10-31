@@ -4,6 +4,7 @@
 (require 'shell-init)
 (require 'themes)
 (require 'ui-config)
+(require 'init-typescript)
 
 
 (custom-set-variables
