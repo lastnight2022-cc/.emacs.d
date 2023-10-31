@@ -48,16 +48,13 @@
   "Set specific package ARCHIVES repository."
   (interactive
    (list (intern (completing-read "Choose package archives: "
-                                  '(emacs-china netease tuna)))))
+                                  '(netease tuna)))))
 
   (setq package-archives
         (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                             (not (gnutls-available-p))))
                (proto (if no-ssl "http" "https")))
           (pcase archives
-            ('emacs-china
-             `(,(cons "gnu"   (concat proto "://elpa.emacs-china.org/gnu/"))
-               ,(cons "melpa" (concat proto "://elpa.emacs-china.org/melpa/"))))
             ('netease
              `(,(cons "gnu"   (concat proto "://mirrors.163.com/elpa/gnu/"))
                ,(cons "melpa" (concat proto "://mirrors.163.com/elpa/melpa/"))))
