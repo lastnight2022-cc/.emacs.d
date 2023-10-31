@@ -41,32 +41,9 @@
     (setq package-selected-packages value)))
 (advice-add 'package--save-selected-packages :override #'my-save-selected-packages)
 
-;;
-;; ELPA: refer to https://github.com/melpa/melpa and https://elpa.emacs-china.org/.
-;;
-(defun set-package-archives (archives)
-  "Set specific package ARCHIVES repository."
-  (interactive
-   (list (intern (completing-read "Choose package archives: "
-                                  '(netease tuna)))))
-
-  (setq package-archives
-        (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                            (not (gnutls-available-p))))
-               (proto (if no-ssl "http" "https")))
-          (pcase archives
-            ('netease
-             `(,(cons "gnu"   (concat proto "://mirrors.163.com/elpa/gnu/"))
-               ,(cons "melpa" (concat proto "://mirrors.163.com/elpa/melpa/"))))
-            ('tuna
-             `(,(cons "gnu"   (concat proto "://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-               ,(cons "melpa" (concat proto "://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))))
-            (archives
-             (error "Unknown archives: '%s'" archives)))))
-
-  (message "Set package archives to '%s'." archives))
-
-(set-package-archives centaur-package-archives)
+(setq package-archives '(("gnu"   . "http://mirrors.163.com/elpa/gnu/")
+                         ("melpa" . "http://mirrors.163.com/elpa/melpa/")
+                              ("org" . "http://mirrors.163.com/elpa/org/")))
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized) ; To avoid warnings in 27
