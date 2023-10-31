@@ -47,11 +47,15 @@
 		        company-echo-delay 0
 		        company-tooltip-offset-display 'scrollbar
 		        company-begin-commands '(self-insert-command))
-  (push '(company-semantic :with company-yasnippet) company-backends)
+;;  (push '(company-semantic :with company-yasnippet) company-backends)
   :hook
   ((after-init . global-company-mode)))
 
-
+(use-package company-box
+  :after company
+  :diminish
+  :config
+  :hook (company-mode . company-box-mode))
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
